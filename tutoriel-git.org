@@ -8,6 +8,10 @@ Et pour le code source de cette page, c’est [[https://github.com/Phundrak/tuto
 #+end_src
 * Git ? Qu’est-ce donc ?
 Git est un logiciel de version de fichiers permettant de garder une trace de toutes les modifications apportées au fichiers suivis dans un répertoire (un dépôt) et ses sous-répertoires –sous couvert qu’ils n’aient pas été ignorés explicitement. Il permet également de conserver plusieurs versions parallèles du projet, comme par exemple une version stable et une version de développement, et permet l’ajout de modifications d’une de ces versions parallèles à une autre via des fusions partielles ou totales de branches, avec une automatisation des fusions de fichiers lorsqu’il n’y a pas de conflit entre ces derniers.
+
+Avant de continuer, sache que je suis bilingue français-sarcasme, si tu es du genre à t’énerver pour un rien, cette page est à haut risque pour toi.
+
+Toujours là ? Tu auras été prévenu·e.
 * Ça a l’air cool, comment ça s’utilise ?
 ** Et surtout, comment ça s’installe ?
 Très bonne question Kevin. Tout d’abord, il faut t’assurer que git soit installé sur ton système et utilisable depuis le terminal. Sous GNU/Linux, tu peux l’installer via ton gestionnaire de paquet, ce qui rendra la commande accessible directement depuis le terminal.
@@ -229,7 +233,7 @@ Ou bien, tu peux télécharger le projet directement via =git=. Eh oui ! git p
 Et c’est bon, tu as accès au répertoire =chat-reseau-P8= et au code source du projet.
 
 ** Et si je veux créer mon propre dépôt sur GitHub
-Dans ce cas là, c’est simple Kévin. Il faut que tu te créées un compte sur GitHub, puis tu cliques sur le bouton =+= et =New Repository=. Tu lui donnes le nom que tu souhaites (en l’occurence je le nomme =temporary-repo= car je vais le supprimer cinq minutes après l’écriture de ces lignes), et tu cliques sur =Create Repository=. Tu n’ajoutes rien avant, pas de description, pas de =.gitignore=, RIEN.
+Dans ce cas là, c’est simple Brigitte. Il faut que tu te créés un compte sur GitHub, puis tu cliques sur le bouton =+= et =New Repository=. Tu lui donnes le nom que tu souhaites (en l’occurence je le nomme =temporary-repo= car je vais le supprimer cinq minutes après l’écriture de ces lignes), et tu cliques sur =Create Repository=. Tu n’ajoutes rien avant, pas de description, pas de =.gitignore=, RIEN.
 
 Et là, magie ! GitHub indique comment ajouter le dépôt distant à ton dépôt local.
 #+BEGIN_SRC text

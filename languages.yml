@@ -1,0 +1,8 @@
+Org:
+  type: programming
+  wrap: true
+  extensions:
+  - ".org"
+  tm_scope: none
+  ace_mode: text
+  language_id: 267

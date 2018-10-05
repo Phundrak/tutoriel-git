@@ -14,7 +14,7 @@ Avant de continuer, sache que je suis bilingue français-sarcasme, si tu es du g
 Toujours là ? Tu auras été prévenu·e.
 * Ça a l’air cool, comment ça s’utilise ?
 ** Et surtout, comment ça s’installe ?
-Très bonne question Kevin. Tout d’abord, il faut t’assurer que git soit installé sur ton système et utilisable depuis le terminal. Sous GNU/Linux, tu peux l’installer via ton gestionnaire de paquet, ce qui rendra la commande accessible directement depuis le terminal.
+Très bonne question Kévin. Tout d’abord, il faut t’assurer que git soit installé sur ton système et utilisable depuis le terminal. Sous GNU/Linux, tu peux l’installer via ton gestionnaire de paquet, ce qui rendra la commande accessible directement depuis le terminal.
 #+BEGIN_SRC text
   $ apt install git                    # Debian, Ubuntu et les distros basées dessus
   $ yum install git                    # CentOS
@@ -50,7 +50,7 @@ Du calme Jean-Kévin, ralentis un peu. Comme le dit ce vieux dicton Chinois :
 Celui qui marche trop vite…… marche…………… trop… vite…? Tu peux tomber et te faire mal je suppose.
 #+END_QUOTE
 Bon, c’est une contrefaçon, donc la qualité de la citation n’est pas extraordinaire. Bref.
-** Je commmence comment ?
+** Je commence comment ?
 Si tu souhaites créer un dépôt git, rien de plus simple : créé ton répertoire dans lequel tu travailleras, et déplace-y-toi. Ensuite, tu pourra initialiser ton dépôt via la commande =git init=.
 #+BEGIN_SRC text
   $ mkdir monsuperprojet
@@ -58,7 +58,7 @@ Si tu souhaites créer un dépôt git, rien de plus simple : créé ton répert
   $ git init
   Initialized empty Git repository in /tmp/monsuperprojet/.git/
 #+END_SRC
-Si tu obtiens à peu près le même message après la dernière commande, félicitations ! Tu viens de créer ton premier dépôt git. En l’occurence, j’ai créé mon dépôt dans =/tmp=, mais toi tu peux voir un truc du genre =/home/corentin/monsuperprojet= à la place. Tu peux vérifier que tout va bien en rentrant la commande =git status=
+Si tu obtiens à peu près le même message après la dernière commande, félicitations ! Tu viens de créer ton premier dépôt git. En l’occurrence, j’ai créé mon dépôt dans =/tmp=, mais toi tu peux voir un truc du genre =/home/corentin/monsuperprojet= à la place. Tu peux vérifier que tout va bien en rentrant la commande =git status=
 #+BEGIN_SRC text
   $ git status
   On branch master
@@ -69,7 +69,7 @@ Si tu obtiens à peu près le même message après la dernière commande, félic
 #+END_SRC
 Parfait !
 ** Et pour ajouter des fichiers ?
-Maintenant tu peux commencer à travailler sur ton projet. Mais tout d’abord, on va voir ce qu’il se passe si jamais on créé un fichier dans le dépot. Créé un fichier =main.c= dans lequel tu vas entrer ce code :
+Maintenant tu peux commencer à travailler sur ton projet. Mais tout d’abord, on va voir ce qu’il se passe si jamais on créé un fichier dans le dépôt. Créé un fichier =main.c= dans lequel tu vas entrer ce code :
 #+BEGIN_SRC C
   #include <stdio.h>
 
@@ -105,7 +105,7 @@ Tu commences à comprendre un peu le bail ? Git vient de détecter qu’un nou
 
           new file:   main.c
 #+END_SRC
-Super, maintenant git va surveiller les changements du fichier, mais attention, il n’a pas encore enregistré son état. Pour l’instant il sait juste que le fichier est là, dans un certain état, mais rien ne garanti encore qu’on pourra retrouver cet état plus tard. On appelle ça le /staging/. Pour ce faire, il faut créer ce qu’on appelle un commit. En gros, il s’agit d’un enregistrement des modifications apportées à un ou plusieurs fichers (dans leur globalité ou partiellement, on verra ça plus tard), le tout avec un commentaire.
+Super, maintenant git va surveiller les changements du fichier, mais attention, il n’a pas encore enregistré son état. Pour l’instant il sait juste que le fichier est là, dans un certain état, mais rien ne garanti encore qu’on pourra retrouver cet état plus tard. On appelle ça le /staging/. Pour ce faire, il faut créer ce qu’on appelle un commit. En gros, il s’agit d’un enregistrement des modifications apportées à un ou plusieurs fichiers (dans leur globalité ou partiellement, on verra ça plus tard), le tout avec un commentaire.
 #+BEGIN_SRC text
   $ git commit -m "Un petit pas pour moi, un grand pas pour mon projet"
   [master (root-commit) 89139ef] Un petit pas pour moi, un grand pas pour mon projet
@@ -150,7 +150,7 @@ Si jamais tu veux à la place ajouter la modification d’un fichier au dernier 
    create mode 100644 projet.txt
 #+END_SRC
 En gros, le commit que tu viens de faire a remplacé le précédent en conservant les informations du commit précédent, mis à part son commentaire. Si tu ne met pas l’option =-m "ton texte"= lors de l’amendement du commit, ton éditeur texte par défaut va s’ouvrir pour que tu puisses modifier le texte du commit précédent si tu le souhaite. Si jamais vi ou vim s’ouvre et que tu n’as aucune idée de comment sortir de cet enfant du démon, tu as juste à appuyer sur la touche Échap (au cas où), puis à taper =:wq= (=w= pour écrire le fichier, =q= pour quitter), puis tu appuye sur la touche Entrée. Si tu as Nano qui s’est ouvert, alors il faut taper Ctrl-X.
-* Euh, j’ai oublié ce que j’ai changé lors du dernier commit
+** Euh, j’ai oublié ce que j’ai changé lors du dernier commit
 Pas de panique ! Tu peux entrer la commande =git diff= afin de voir ce que tout ce que tu as modifié lors de ton dernier commit. Et si tu ne souhaite voir les modifications que d’un certain fichier, tu peux ajouter le nom de ton fichier à la fin de la commande.
 #+BEGIN_SRC text
   $ echo "C’est un super projet !" > projet.txt
@@ -208,18 +208,15 @@ Plus propre, non ? Et les références sont plus courtes, ce qui est plus agr�
   -projet
   +C’est un super projet !
 #+END_SRC
-
-* Il y a des fichiers dont je me fiche dans mon dépot
+** Il y a des fichiers dont je me fiche dans mon dépôt
 Dans ce cas, il est grand temps de te présenter le fichier =.gitignore=. Comme son nom l’indique, il permet au dépôt d’ignorer des fichiers selon ce que tu lui indiqueras. Par exemple, si tu veux ignorer tous les fichiers qui se terminent en =.out= (ou =.exe= sous Windows), tu peux éditer (ou créer) ton =.gitignore= et entrer ces lignes :
 #+BEGIN_SRC text
   ,*.out
   ,*.exe
 #+END_SRC
 Maintenant, si tu créés un fichier en =.out= ou =.exe=, il sera complètement ignoré par git et ne sera pas stocké dans l’historique des versions.
-
 * J’ai entendu parler de GitHub…
 Tu commences à me plaire Enzo ! GitHub est un site web sur lequel tu peux héberger des projets libres ou open-source (si tu ne connais pas la différence, voici [[https://www.gnu.org/philosophy/open-source-misses-the-point.fr.html][un article]] pour t’aider à comprendre, et [[https://www.gnu.org/philosophy/free-software-for-freedom.fr.html][un autre]] pour la route). C’est en particulier orienté pour les projets gérés par git, ce qui tombe bien car c’est ce qu’on utilise. Cela a pour avantage de pouvoir aisément partager ton code et d’assurer qu’il est bien sauvegardé quelque part d’autre que ton disque dur (un =rm -rf= est si vite arrivé). Et surtout, ça peut te permettre de collaborer avec d’autres personnes sur le même projet sans te casser la tête.
-
 ** J’ai téléchargé un projet en zip
 Ou bien, tu peux télécharger le projet directement via =git=. Eh oui ! git permet de gérer les dépôts dits distants, c’est à dire ceux qui sont hébergés sur un serveur en ligne, comme par exemple sur GitHub. Pour cela, il te faut te munir du lien vers le dépôt git, et le passer en argument de =git clone=. Par exemple, si tu veux télécharger de dépôt du petit logiciel de chat en réseau que j’ai codé durant ma L2 d’informatique, tu peux exécuter ceci :
 #+BEGIN_SRC text
@@ -231,18 +228,16 @@ Ou bien, tu peux télécharger le projet directement via =git=. Eh oui ! git p
   Resolving deltas: 100% (107/107), done.
 #+END_SRC
 Et c’est bon, tu as accès au répertoire =chat-reseau-P8= et au code source du projet.
-
 ** Et si je veux créer mon propre dépôt sur GitHub
-Dans ce cas là, c’est simple Brigitte. Il faut que tu te créés un compte sur GitHub, puis tu cliques sur le bouton =+= et =New Repository=. Tu lui donnes le nom que tu souhaites (en l’occurence je le nomme =temporary-repo= car je vais le supprimer cinq minutes après l’écriture de ces lignes), et tu cliques sur =Create Repository=. Tu n’ajoutes rien avant, pas de description, pas de =.gitignore=, RIEN.
+Dans ce cas là, c’est simple Brigitte. Il faut que tu te créés un compte sur GitHub, puis tu cliques sur le bouton =+= et =New Repository=. Tu lui donnes le nom que tu souhaites (en l’occurrence je le nomme =temporary-repo= car je vais le supprimer cinq minutes après l’écriture de ces lignes), et tu cliques sur =Create Repository=. Tu n’ajoutes rien avant, pas de description, pas de =.gitignore=, RIEN.
 
 Et là, magie ! GitHub indique comment ajouter le dépôt distant à ton dépôt local.
 #+BEGIN_SRC text
   $ git remote add origin https://github.com/Phundrak/temporary-repo.git
 #+END_SRC
 Et voilà, ton dépôt est lié au dépôt distant. Oui, juste comme ça.
-
 ** Et du coup, comment je met tout ça en ligne ?
-Bon ok, ce n’est pas aussi simple que ça. Une fois que tu as lié ton dépôt au dépôt distant, il faudra que tu mettes en ligne tes commits quand tu en auras l’occasion. Pour ce faire, tu n’as qu’à taper =git push= ; et la première fois, il faudra que tu indiques à ton dépôt où mettre en ligen précisément dans le dépôt distant, auquel cas tu ajoutes =-u origin master= pour cette première fois. Git te demandera donc tes identifiants GitHub pour pouvoir mettre tout ça en ligne.
+Bon ok, ce n’est pas aussi simple que ça. Une fois que tu as lié ton dépôt au dépôt distant, il faudra que tu mettes en ligne tes commits quand tu en auras l’occasion. Pour ce faire, tu n’as qu’à taper =git push= ; et la première fois, il faudra que tu indiques à ton dépôt où mettre en ligne précisément dans le dépôt distant, auquel cas tu ajoutes =-u origin master= pour cette première fois. Git te demandera donc tes identifiants GitHub pour pouvoir mettre tout ça en ligne.
 #+BEGIN_SRC text
   $ git push -u origin master
   Username for 'https://github.com': phundrak
@@ -262,9 +257,8 @@ Bon ok, ce n’est pas aussi simple que ça. Une fois que tu as lié ton dépôt
   Branch 'master' set up to track remote branch 'master' from 'origin'.
 #+END_SRC
 Bon, là en nom d’utilisateur y’a le mien, faudra remplacer avec le tiens. Et ouais, ma vitesse de mise en ligne n’est pas fameuse, je suis sur une connexion 3G+ à l’heure où j’écris ces lignes, ne me juge pas. Bref, toujours est-il que je viens de mettre en ligne les fichiers du dépôt sur GitHub. Pas la peine de chercher le mien sur GitHub par contre, ça fera un bail que je l’aurai supprimé au moment où tu liras ces lignes.
-
 ** Quelqu’un a fait des modifications depuis mon dernier commit, je récupère ça comment ?
-Pour faire un exemple, je viens de créer un =README.md= sur GitHub directement. Ce type de fichiers est assez standard afin de présenter plus ou moins en détails le dépôt et le projet qui y est lié, et son contenu apparaitra formatté sur la page du dépôt sur GitHub s’il est au format =.md= (Markdown) ou =.org= (org-mode, le Markdown d’Emacs avec lequel est écrit ce tutoriel). Mais il n’est pas présent dans mon dépôt local, du coup je vais devoir le récupérer. On va donc entrer =git pull=.
+Pour faire un exemple, je viens de créer un =README.md= sur GitHub directement. Ce type de fichiers est assez standard afin de présenter plus ou moins en détails le dépôt et le projet qui y est lié, et son contenu apparaîtra formatté sur la page du dépôt sur GitHub s’il est au format =.md= (Markdown) ou =.org= (org-mode, le Markdown d’Emacs avec lequel est écrit ce tutoriel). Mais il n’est pas présent dans mon dépôt local, du coup je vais devoir le récupérer. On va donc entrer =git pull=.
 #+BEGIN_SRC text
   $ git pull
   remote: Enumerating objects: 4, done.
@@ -280,3 +274,7 @@ Pour faire un exemple, je viens de créer un =README.md= sur GitHub directement.
    1 file changed, 2 insertions(+)
    create mode 100644 README.md
 #+END_SRC
+** Je suis en train de travailler sur le même fichier que Ginette
+Là, c’est un problème qui aurait pu être évité avec l’usage des branches dont je t’avais parlé plus haut, mais visiblement, vous êtes sur la même branche. Pas bien. Dans ce cas-là, met-toi d’accord avec Ginette pour savoir qui fait ses push en premier. Si le choix tombe sur Ginette, ou si elle a imposé sa vision des choses et a fait son push avant toi, GitHub va râler car tu n’es pas à jour. Dans ce cas ne panique pas, si tu n’as pas fait tes commits, lance la commande =git stash= ; ça va sauvegarder tes modifications dans un coin à part et va annuler tes modifications
+
+#  LocalWords:  Jean-Kévin staging Ctrl-X déplace-y-toi push

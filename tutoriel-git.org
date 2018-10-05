@@ -12,7 +12,7 @@ Git est un logiciel de version de fichiers permettant de garder une trace de tou
 Avant de continuer, sache que je suis bilingue français-sarcasme, si tu es du genre à t’énerver pour un rien, cette page est à haut risque pour toi.
 
 Toujours là ? Tu auras été prévenu·e.
-* Ça a l’air cool, comment ça s’utilise ?
+* Ça a l’air cool, comment ça s’obtient ?
 ** Et surtout, comment ça s’installe ?
 Très bonne question Kévin. Tout d’abord, il faut t’assurer que git soit installé sur ton système et utilisable depuis le terminal. Sous GNU/Linux, tu peux l’installer via ton gestionnaire de paquet, ce qui rendra la commande accessible directement depuis le terminal.
 #+BEGIN_SRC text
@@ -44,7 +44,7 @@ Tu peux aussi éditer le fichier =~/.gitconfig= comme suit :
 Cela permettra d’associer ton nom et ton adresse mail à tes commits. Par défaut, ceux qui sont enregistrés avec ton compte utilisateur de ton PC sont mis par défaut dans ces paramètres, mais on met quasiment tous un nom à la con quand on le créé. Et ça permet d’avoir les même paramètres si tu es sur un autre ordinateur.
 
 Il y a encore pas mal de paramètres que tu peux gérer avec ce fichier, je reparlerai de certains plus tard, mais pour le reste, la documentation en ligne sur =gitconfig= ne manque pas.
-* Ok très bien, mais je veux utiliser git moi !
+* Ok très bien, comment on l’utilise maintenant ?
 Du calme Jean-Kévin, ralentis un peu. Comme le dit ce vieux dicton Chinois :
 #+BEGIN_QUOTE
 Celui qui marche trop vite…… marche…………… trop… vite…? Tu peux tomber et te faire mal je suppose.
@@ -72,7 +72,6 @@ Parfait !
 Maintenant tu peux commencer à travailler sur ton projet. Mais tout d’abord, on va voir ce qu’il se passe si jamais on créé un fichier dans le dépôt. Créé un fichier =main.c= dans lequel tu vas entrer ce code :
 #+BEGIN_SRC C
   #include <stdio.h>
-
   int main(int argc, char *argv[]) {
     printf("Hello World!\n");
     return 0;
@@ -117,7 +116,6 @@ Parfait ! Certains éléments peuvent être un peu différent chez toi, comme 
 Si jamais tu as un staging que tu veux annuler, tu peux utiliser la commande =git reset HEAD nomdetonfichier voiredautresfichiers= pour annuler le staging. Une fois le fichier qui n’est plus dans ton staging, tu peux même annuler toutes les modifications que tu as apporté au fichier depuis ton dernier commit avec la commande =git checkout -- tonfichier voiredautresfichiers=. Par exemple, si j’ai modifié mon =main.c= en modifiant ainsi les arguments du =main()= :
 #+BEGIN_SRC C
   #include <stdio.h>
-
   int main(void) {
     printf("Hello World!\n");
     return 0;
@@ -215,6 +213,8 @@ Dans ce cas, il est grand temps de te présenter le fichier =.gitignore=. Comme 
   ,*.exe
 #+END_SRC
 Maintenant, si tu créés un fichier en =.out= ou =.exe=, il sera complètement ignoré par git et ne sera pas stocké dans l’historique des versions.
+** On est plusieurs dessus en fait…
+
 * J’ai entendu parler de GitHub…
 Tu commences à me plaire Enzo ! GitHub est un site web sur lequel tu peux héberger des projets libres ou open-source (si tu ne connais pas la différence, voici [[https://www.gnu.org/philosophy/open-source-misses-the-point.fr.html][un article]] pour t’aider à comprendre, et [[https://www.gnu.org/philosophy/free-software-for-freedom.fr.html][un autre]] pour la route). C’est en particulier orienté pour les projets gérés par git, ce qui tombe bien car c’est ce qu’on utilise. Cela a pour avantage de pouvoir aisément partager ton code et d’assurer qu’il est bien sauvegardé quelque part d’autre que ton disque dur (un =rm -rf= est si vite arrivé). Et surtout, ça peut te permettre de collaborer avec d’autres personnes sur le même projet sans te casser la tête.
 ** J’ai téléchargé un projet en zip

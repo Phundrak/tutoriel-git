@@ -2,9 +2,9 @@
 #+TITLE: Tutoriel Git et GitHub
 
 #+begin_src org :exports (when (eq org-export-current-backend 'xelatex) "none")
-Et tout d’abord, si tu veux la version PDF du bouzin, [[https://phundrak.fr/git/tutoriel-git.pdf][c’est par là]].
+Tout d’abord, si tu veux la version PDF du bouzin, [[https://phundrak.fr/git/tutoriel-git.pdf][c’est par là]].
 
-Et pour le code source de cette page, c’est [[https://phundrak.fr/git/tutoriel-git.org][là]], [[https://phundrak.fr/git/theme-readtheorg.setup][là]] et [[https://phundrak.fr/git/headers.org][là]].
+Et pour le code source de cette page, c’est [[https://github.com/Phundrak/tutoriel-git][là]], sur GitHub.
 #+end_src
 * Git ? Qu’est-ce donc ?
 Git est un logiciel de version de fichiers permettant de garder une trace de toutes les modifications apportées au fichiers suivis dans un répertoire (un dépôt) et ses sous-répertoires –sous couvert qu’ils n’aient pas été ignorés explicitement. Il permet également de conserver plusieurs versions parallèles du projet, comme par exemple une version stable et une version de développement, et permet l’ajout de modifications d’une de ces versions parallèles à une autre via des fusions partielles ou totales de branches, avec une automatisation des fusions de fichiers lorsqu’il n’y a pas de conflit entre ces derniers.

@@ -61,7 +61,7 @@ Si tu souhaites créer un dépôt git, rien de plus simple : créé ton répert
 #+BEGIN_SRC text
   $ mkdir monsuperprojet
   $ cd monsuperprojet
-  $ git init
+  $ git init .
   Initialized empty Git repository in /tmp/monsuperprojet/.git/
 #+END_SRC
 Si tu obtiens à peu près le même message après la dernière commande, félicitations ! Tu viens de créer ton premier dépôt git. En l’occurrence, j’ai créé mon dépôt dans =/tmp=, mais toi tu peux voir un truc du genre =/home/corentin/monsuperprojet= à la place. Tu peux vérifier que tout va bien en rentrant la commande =git status=

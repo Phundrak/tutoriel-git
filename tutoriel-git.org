@@ -1,7 +1,8 @@
 #+INCLUDE: "headers.org"
 #+TITLE: Tutoriel Git et GitHub
 
-#+begin_src org :exports (when (eq org-export-current-backend 'xelatex) "none")
+#+begin_src org
+ :exports (when (eq org-export-current-backend 'xelatex) "none")
 Tout d’abord, si tu veux la version PDF du bouzin, [[https://phundrak.fr/git/tutoriel-git.pdf][c’est par là]].
 
 Et pour le code source de cette page, c’est [[https://github.com/Phundrak/tutoriel-git][là]], sur GitHub.
@@ -23,10 +24,16 @@ Très bonne question Kévin. Tout d’abord, il faut t’assurer que git soit in
   $ emerge --ask --verbose dec-vcs/git # Gentoo
 #+END_SRC
 
-#+CAPTION: >install gentoo
-#+NAME: >install gentoo
-#+ATTR_HTML: :style display: block; margin: auto;
-[[./install_gentoo.jpg]]
+#+BEGIN_EXPORT html
+  <div id="org347e458" class="figure">
+    <p>
+      <img src="https://cdn.phundrak.fr/img/install_gentoo.jpg" alt="install_gentoo.jpg" style="display: block; margin: auto;" />
+    </p>
+    <p>
+      <span class="figure-number">Figure&nbsp;1&nbsp;: </span>&gt;install gentoo
+    </p>
+  </div>
+#+END_EXPORT
 
 Si tu n’es pas sous GNU/Linux mais que tu as au moins le goût d’être sous un OS de type Unix, tu peux exécuter la commande correspondante à ton OS suivant :
 #+BEGIN_SRC text
@@ -61,7 +68,7 @@ Si tu souhaites créer un dépôt git, rien de plus simple : créé ton répert
 #+BEGIN_SRC text
   $ mkdir monsuperprojet
   $ cd monsuperprojet
-  $ git init .
+  $ git init
   Initialized empty Git repository in /tmp/monsuperprojet/.git/
 #+END_SRC
 Si tu obtiens à peu près le même message après la dernière commande, félicitations ! Tu viens de créer ton premier dépôt git. En l’occurrence, j’ai créé mon dépôt dans =/tmp=, mais toi tu peux voir un truc du genre =/home/corentin/monsuperprojet= à la place. Tu peux vérifier que tout va bien en rentrant la commande =git status=
@@ -119,7 +126,7 @@ Super, maintenant git va surveiller les changements du fichier, mais attention, 
 #+END_SRC
 Parfait ! Certains éléments peuvent être un peu différent chez toi, comme par exemple la référence du commit juste avant le message. Ça, c’est un truc qui est géré automatiquement par git. Et voilà, on a l’état de notre répertoire qui est enregistré et qui sera disponible plus tard. Maintenant, tu sais comment enregistrer des état de ton dépôt via les commits.
 ** Cool, mais j’ai accidentellement mis un fichier en staging
-Si jamais tu as un staging que tu veux annuler, tu peux utiliser la commande =git reset HEAD nomdetonfichier voiredautresfichiers= pour annuler le staging. Une fois le fichier qui n’est plus dans ton staging, tu peux même annuler toutes les modifications que tu as apporté au fichier depuis ton dernier commit avec la commande =git checkout -- tonfichier voiredautresfichiers=. Par exemple, si j’ai modifié mon =main.c= en modifiant ainsi les arguments du =main()= :
+Si jamais tu as un staging que tu veux annuler, tu peux utiliser la commande =git reset HEAD nomdufichier= (ou plusieurs noms de fichiers) pour annuler le staging. Une fois le fichier qui n’est plus dans ton staging, tu peux même annuler toutes les modifications que tu as apporté au fichier depuis ton dernier commit avec la commande =git checkout -- nomdufichier=, et tu peux aussi mettre plusieurs noms de fichiers. Par exemple, si j’ai modifié mon =main.c= en modifiant ainsi les arguments du =main()= :
 #+BEGIN_SRC C
   #include <stdio.h>
   int main(void) {

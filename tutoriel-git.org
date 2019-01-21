@@ -1,8 +1,7 @@
 #+INCLUDE: "headers.org"
 #+TITLE: Tutoriel Git et GitHub
 
-#+begin_src org
- :exports (when (eq org-export-current-backend 'xelatex) "none")
+#+begin_src org :exports (when (eq org-export-current-backend 'xelatex) "none")
 Tout d’abord, si tu veux la version PDF du bouzin, [[https://phundrak.fr/git/tutoriel-git.pdf][c’est par là]].
 
 Et pour le code source de cette page, c’est [[https://github.com/Phundrak/tutoriel-git][là]], sur GitHub.

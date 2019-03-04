@@ -1,11 +1,12 @@
 #+INCLUDE: "headers.org"
+#+MACRO: if-latex-else (eval (if (org-export-derived-backend-p org-export-current-backend 'latex) "$1" "$2"))
 #+TITLE: Tutoriel Git et GitHub
 
-#+begin_src org :exports (when (eq org-export-current-backend 'xelatex) "none")
-Tout d’abord, si tu veux la version PDF du bouzin, [[https://phundrak.fr/git/tutoriel-git.pdf][c’est par là]].
+* Avant-propos
+Car oui, j’ai quand même un fond sérieux, même si le reste du tuto ne m’aide pas à confirmer ces dires. Tout d’abord, si tu veux la version PDF du bouzin, c’est par là : [[https://phundrak.fr/git/tutoriel-git.pdf]]. Et si tu lis déjà le PDF, la version web est par là : [[https://phundrak.fr/git]]. Et pour le code source de cette page, c’est sur GitHub (https://github.com/Phundrak/tutoriel-git) et mon Gitlab perso ([[https://labs.phundrak.fr/phundrak/tutoriel-git]]).
 
-Et pour le code source de cette page, c’est [[https://github.com/Phundrak/tutoriel-git][là]], sur GitHub.
-#+end_src
+Bon, c’était court. Prêt pour le tuto ? C’est parti !
+
 * Git ? Qu’est-ce donc ?
 Git est un logiciel de version de fichiers permettant de garder une trace de toutes les modifications apportées au fichiers suivis dans un répertoire (un dépôt) et ses sous-répertoires –sous couvert qu’ils n’aient pas été ignorés explicitement. Il permet également de conserver plusieurs versions parallèles du projet, comme par exemple une version stable et une version de développement, et permet l’ajout de modifications d’une de ces versions parallèles à une autre via des fusions partielles ou totales de branches, avec une automatisation des fusions de fichiers lorsqu’il n’y a pas de conflit entre ces derniers.
 
@@ -313,7 +314,7 @@ Pour faire un exemple, je viens de créer un =README.md= sur GitHub directement.
    create mode 100644 README.md
 #+END_SRC
 ** Je suis en train de travailler sur le même fichier que Ginette
-Là, c’est un problème qui aurait pu être évité avec l’usage des branches dont je t’avais parlé plus haut, mais visiblement, vous êtes sur la même branche. Pas bien. Dans ce cas-là, met-toi d’accord avec Ginette pour savoir qui fait ses push en premier. Si le choix tombe sur Ginette, ou si elle a imposé sa vision des choses et a fait son push avant toi, GitHub va râler car tu n’es pas à jour. Dans ce cas ne panique pas, si tu n’as pas fait tes commits, lance la commande =git stash= ; ça va sauvegarder tes modifications dans un coin à part et va annuler tes modifications.
+Là, c’est un problème qui aurait pu être évité avec l’usage des branches dont je t’avais parlé plus haut, mais visiblement, vous êtes sur la même branche. Pas bien. Dans ce cas-là, met-toi d’accord avec Ginette pour savoir qui fait ses push en premier. Si le choix tombe sur Ginette, ou si elle a imposé sa vision des choses et a fait son push avant toi, GitHub va râler car tu n’es pas à jour. Dans ce cas ne panique pas, si tu n’as pas fait tes commits, lance la commande =git stash= ; ça va sauvegarder tes modifications dans un coin à part et va annuler tes modifications. Va sur /ta/ branche sur laquelle Ginette n’est pas en train de travailler, voire créé-en une nouvelle avec ~git checkout -b tanouvellebranche~, et exécute ~git stash pop~ pour rétablir tes modifications sur cette branche.
 ** GitHub ne veut pas de mes pushs sur le dépôt de Gilberte, oskour !
 Du calme Jean-Célestin. Cela veut tout simplement dire que tu n’as tout simplement pas les droits d’écriture sur son dépôt. Du coup, soit tu peux lui demander directement à ce qu’elle te donne les droits d’écriture si elle a confiance en toi, soit tu peux créer un fork puis une pull-request sur GitHub depuis ton fork où tu auras fait tes modifications.
 ** Fork ? Pull request ? Que font des fourchettes et des pulls dans ce tuto ?

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
 <head>
-<!-- 2019-01-21 lun. 20:21 -->
+<!-- 2019-03-04 lun. 15:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tutoriel Git et GitHub</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -191,7 +204,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -243,53 +256,62 @@ for the JavaScript code in this tag.
 <h2>Table des matières</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd5dc8f7">1. Git ? Qu’est-ce donc ?</a></li>
-<li><a href="#org9702fca">2. Ça a l’air cool, comment ça s’obtient ?</a>
+<li><a href="#org87cac80">1. Avant-propos</a></li>
+<li><a href="#orge120ef2">2. Git ? Qu’est-ce donc ?</a></li>
+<li><a href="#orgede3b11">3. Ça a l’air cool, comment ça s’obtient ?</a>
 <ul>
-<li><a href="#org333d2ea">2.1. Et surtout, comment ça s’installe ?</a></li>
-<li><a href="#orgf5f99ae">2.2. Ok c’est bon, et il y a une configuration à faire ?</a></li>
+<li><a href="#org13ddd7b">3.1. Et surtout, comment ça s’installe ?</a></li>
+<li><a href="#orgafb9fd1">3.2. Ok c’est bon, et il y a une configuration à faire ?</a></li>
 </ul>
 </li>
-<li><a href="#orgd81deb9">3. Ok très bien, comment on l’utilise maintenant ?</a>
+<li><a href="#orga1b1230">4. Ok très bien, comment on l’utilise maintenant ?</a>
 <ul>
-<li><a href="#org45af36f">3.1. Je commence comment ?</a></li>
-<li><a href="#org10dda73">3.2. Et pour ajouter des fichiers ?</a></li>
-<li><a href="#org41d5117">3.3. Cool, mais j’ai accidentellement mis un fichier en staging</a></li>
-<li><a href="#org38bcd9c">3.4. En fait, j’ai juste oublié un truc dans mon commit précédent</a></li>
-<li><a href="#org9a93b6a">3.5. Euh, j’ai oublié ce que j’ai changé lors du dernier commit</a></li>
-<li><a href="#orga1259b0">3.6. Il y a des fichiers dont je me fiche dans mon dépôt</a></li>
-<li><a href="#org4aca8c0">3.7. On est plusieurs dessus en fait…</a></li>
+<li><a href="#org9716307">4.1. Je commence comment ?</a></li>
+<li><a href="#org9516ccc">4.2. Et pour ajouter des fichiers ?</a></li>
+<li><a href="#org331618e">4.3. Cool, mais j’ai accidentellement mis un fichier en staging</a></li>
+<li><a href="#org7939e24">4.4. En fait, j’ai juste oublié un truc dans mon commit précédent</a></li>
+<li><a href="#org9a4f30e">4.5. Euh, j’ai oublié ce que j’ai changé lors du dernier commit</a></li>
+<li><a href="#org82ae757">4.6. Il y a des fichiers dont je me fiche dans mon dépôt</a></li>
+<li><a href="#orgcf77752">4.7. On est plusieurs dessus en fait…</a></li>
 </ul>
 </li>
-<li><a href="#org3ce705c">4. J’ai entendu parler de GitHub…</a>
+<li><a href="#orgd6e3ca9">5. J’ai entendu parler de GitHub…</a>
 <ul>
-<li><a href="#org1e943ba">4.1. J’ai téléchargé un projet en zip</a></li>
-<li><a href="#org12b50dd">4.2. Et si je veux créer mon propre dépôt sur GitHub</a></li>
-<li><a href="#org3780760">4.3. Et du coup, comment je met tout ça en ligne ?</a></li>
-<li><a href="#org4e0b939">4.4. Quelqu’un a fait des modifications depuis mon dernier commit, je récupère ça comment ?</a></li>
-<li><a href="#orgafeb18d">4.5. Je suis en train de travailler sur le même fichier que Ginette</a></li>
-<li><a href="#org1936e87">4.6. GitHub ne veut pas de mes pushs sur le dépôt de Gilberte, oskour !</a></li>
-<li><a href="#orgd44543c">4.7. Fork ? Pull request ? Que font des fourchettes et des pulls dans ce tuto ?</a></li>
-<li><a href="#org4a2bb3f">4.8. J’ai remarqué un bug ou une erreur, mais je ne peux pas corriger ça moi-même</a></li>
+<li><a href="#org567803c">5.1. J’ai téléchargé un projet en zip</a></li>
+<li><a href="#org364f435">5.2. Et si je veux créer mon propre dépôt sur GitHub</a></li>
+<li><a href="#orgc386736">5.3. Et du coup, comment je met tout ça en ligne ?</a></li>
+<li><a href="#orgb488b58">5.4. Quelqu’un a fait des modifications depuis mon dernier commit, je récupère ça comment ?</a></li>
+<li><a href="#orgb017de4">5.5. Je suis en train de travailler sur le même fichier que Ginette</a></li>
+<li><a href="#orgf4d641b">5.6. GitHub ne veut pas de mes pushs sur le dépôt de Gilberte, oskour !</a></li>
+<li><a href="#org60979ea">5.7. Fork ? Pull request ? Que font des fourchettes et des pulls dans ce tuto ?</a></li>
+<li><a href="#org30468eb">5.8. J’ai remarqué un bug ou une erreur, mais je ne peux pas corriger ça moi-même</a></li>
 </ul>
 </li>
-<li><a href="#orgf953051">5. Les raccourcis et paramètres de Git</a></li>
-<li><a href="#orgc1ca16e">6. Et c’est tout ?</a></li>
+<li><a href="#org41de57a">6. Les raccourcis et paramètres de Git</a></li>
+<li><a href="#org23fb4ba">7. Et c’est tout ?</a></li>
 </ul>
 </div>
 </div>
 <p>
 
 </p>
-<div class="org-src-container">
-<pre class="src src-org">Tout d&#8217;abord, si tu veux la version PDF du bouzin, <span style="color: #899597; text-decoration: underline;"><a href="https://phundrak.fr/git/tutoriel-git.pdf">c&#8217;est par l&#224;</a></span>.
 
-Et pour le code source de cette page, c&#8217;est <span style="color: #899597; text-decoration: underline;"><a href="https://github.com/Phundrak/tutoriel-git">l&#224;</a></span>, sur GitHub.
-</pre>
-</div>
-<div id="outline-container-orgd5dc8f7" class="outline-2">
-<h2 id="orgd5dc8f7"><span class="section-number-2">1</span> Git ? Qu’est-ce donc ?</h2>
+<div id="outline-container-org87cac80" class="outline-2">
+<h2 id="org87cac80"><span class="section-number-2">1</span> Avant-propos</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+Car oui, j’ai quand même un fond sérieux, même si le reste du tuto ne m’aide pas à confirmer ces dires. Tout d’abord, si tu veux la version PDF du bouzin, c’est par là : <a href="https://phundrak.fr/git/tutoriel-git.pdf">https://phundrak.fr/git/tutoriel-git.pdf</a>. Et si tu lis déjà le PDF, la version web est par là : <a href="https://phundrak.fr/git">https://phundrak.fr/git</a>. Et pour le code source de cette page, c’est sur GitHub (<a href="https://github.com/Phundrak/tutoriel-git">https://github.com/Phundrak/tutoriel-git</a>) et mon Gitlab perso (<a href="https://labs.phundrak.fr/phundrak/tutoriel-git">https://labs.phundrak.fr/phundrak/tutoriel-git</a>).
+</p>
+
+<p>
+Bon, c’était court. Prêt pour le tuto ? C’est parti !
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge120ef2" class="outline-2">
+<h2 id="orge120ef2"><span class="section-number-2">2</span> Git ? Qu’est-ce donc ?</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 Git est un logiciel de version de fichiers permettant de garder une trace de toutes les modifications apportées au fichiers suivis dans un répertoire (un dépôt) et ses sous-répertoires –sous couvert qu’ils n’aient pas été ignorés explicitement. Il permet également de conserver plusieurs versions parallèles du projet, comme par exemple une version stable et une version de développement, et permet l’ajout de modifications d’une de ces versions parallèles à une autre via des fusions partielles ou totales de branches, avec une automatisation des fusions de fichiers lorsqu’il n’y a pas de conflit entre ces derniers.
 </p>
@@ -303,13 +325,13 @@ Toujours là ? Tu auras été prévenu·e.
 </p>
 </div>
 </div>
-<div id="outline-container-org9702fca" class="outline-2">
-<h2 id="org9702fca"><span class="section-number-2">2</span> Ça a l’air cool, comment ça s’obtient ?</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgede3b11" class="outline-2">
+<h2 id="orgede3b11"><span class="section-number-2">3</span> Ça a l’air cool, comment ça s’obtient ?</h2>
+<div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org333d2ea" class="outline-3">
-<h3 id="org333d2ea"><span class="section-number-3">2.1</span> Et surtout, comment ça s’installe ?</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org13ddd7b" class="outline-3">
+<h3 id="org13ddd7b"><span class="section-number-3">3.1</span> Et surtout, comment ça s’installe ?</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 Très bonne question Kévin. Tout d’abord, il faut t’assurer que git soit installé sur ton système et utilisable depuis le terminal. Sous GNU/Linux, tu peux l’installer via ton gestionnaire de paquet, ce qui rendra la commande accessible directement depuis le terminal.
 </p>
@@ -345,9 +367,9 @@ Si tu es sous Windows&#x2026; Bonne chance. Toutes les commandes seront en synta
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5f99ae" class="outline-3">
-<h3 id="orgf5f99ae"><span class="section-number-3">2.2</span> Ok c’est bon, et il y a une configuration à faire ?</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgafb9fd1" class="outline-3">
+<h3 id="orgafb9fd1"><span class="section-number-3">3.2</span> Ok c’est bon, et il y a une configuration à faire ?</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 Tu peux configurer Git si tu le souhaites, oui. En général, il est recommandé de paramétrer au moins son nom et son email. Tu peux les paramétrer via la ligne de commande :
 </p>
@@ -375,9 +397,9 @@ Il y a encore pas mal de paramètres que tu peux gérer avec ce fichier, je repa
 </div>
 </div>
 </div>
-<div id="outline-container-orgd81deb9" class="outline-2">
-<h2 id="orgd81deb9"><span class="section-number-2">3</span> Ok très bien, comment on l’utilise maintenant ?</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orga1b1230" class="outline-2">
+<h2 id="orga1b1230"><span class="section-number-2">4</span> Ok très bien, comment on l’utilise maintenant ?</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Du calme Jean-Kévin, ralentis un peu. Comme le dit ce vieux dicton Chinois :
 </p>
@@ -390,9 +412,9 @@ Celui qui marche trop vite…… marche…………… trop… vite…? Tu peux 
 Bon, c’est une contrefaçon, donc la qualité de la citation n’est pas extraordinaire. Bref.
 </p>
 </div>
-<div id="outline-container-org45af36f" class="outline-3">
-<h3 id="org45af36f"><span class="section-number-3">3.1</span> Je commence comment ?</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org9716307" class="outline-3">
+<h3 id="org9716307"><span class="section-number-3">4.1</span> Je commence comment ?</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Si tu souhaites créer un dépôt git, rien de plus simple : créé ton répertoire dans lequel tu travailleras, et déplace-y-toi. Ensuite, tu pourra initialiser ton dépôt via la commande <code>git init</code>.
 </p>
@@ -420,18 +442,18 @@ Parfait !
 </p>
 </div>
 </div>
-<div id="outline-container-org10dda73" class="outline-3">
-<h3 id="org10dda73"><span class="section-number-3">3.2</span> Et pour ajouter des fichiers ?</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org9516ccc" class="outline-3">
+<h3 id="org9516ccc"><span class="section-number-3">4.2</span> Et pour ajouter des fichiers ?</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 Maintenant tu peux commencer à travailler sur ton projet. Mais tout d’abord, on va voir ce qu’il se passe si jamais on créé un fichier dans le dépôt. Créé un fichier <code>main.c</code> dans lequel tu vas entrer ce code :
 </p>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #929EA1;">#include</span> <span style="color: #d1dadb;">&lt;</span><span style="color: #727F80;">stdio.h</span><span style="color: #d1dadb;">&gt;</span>
-<span style="color: #929EA1;">int</span> <span style="color: #A6B6B8;">main</span><span style="color: #d1dadb;">(</span><span style="color: #929EA1;">int</span> <span style="color: #727F80;">argc</span>, <span style="color: #929EA1;">char</span> *<span style="color: #727F80;">argv</span><span style="color: #798787;">[]</span><span style="color: #d1dadb;">)</span> <span style="color: #d1dadb;">{</span>
-  printf<span style="color: #798787;">(</span><span style="color: #727F80;">"Hello World!\n"</span><span style="color: #798787;">)</span>;
-  <span style="color: #899597; font-weight: bold;">return</span> <span style="color: #798787;">0</span>;
-<span style="color: #d1dadb;">}</span>
+<pre class="src src-C"><span style="color: #9BAEAC;">#include</span> <span style="color: #d0dbda;">&lt;</span><span style="color: #6E8F98;">stdio.h</span><span style="color: #d0dbda;">&gt;</span>
+<span style="color: #9BAEAC;">int</span> <span style="color: #9FC1C2;">main</span><span style="color: #d0dbda;">(</span><span style="color: #9BAEAC;">int</span> <span style="color: #6E8F98;">argc</span>, <span style="color: #9BAEAC;">char</span> *<span style="color: #6E8F98;">argv</span><span style="color: #69959F;">[]</span><span style="color: #d0dbda;">)</span> <span style="color: #d0dbda;">{</span>
+  printf<span style="color: #69959F;">(</span><span style="color: #6E8F98;">"Hello World!\n"</span><span style="color: #69959F;">)</span>;
+  <span style="color: #91ADAF; font-weight: bold;">return</span> <span style="color: #69959F;">0</span>;
+<span style="color: #d0dbda;">}</span>
 </pre>
 </div>
 <p>
@@ -482,18 +504,18 @@ Parfait ! Certains éléments peuvent être un peu différent chez toi, comme 
 </p>
 </div>
 </div>
-<div id="outline-container-org41d5117" class="outline-3">
-<h3 id="org41d5117"><span class="section-number-3">3.3</span> Cool, mais j’ai accidentellement mis un fichier en staging</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org331618e" class="outline-3">
+<h3 id="org331618e"><span class="section-number-3">4.3</span> Cool, mais j’ai accidentellement mis un fichier en staging</h3>
+<div class="outline-text-3" id="text-4-3">
 <p>
 Si jamais tu as un staging que tu veux annuler, tu peux utiliser la commande <code>git reset HEAD nomdufichier</code> (ou plusieurs noms de fichiers) pour annuler le staging. Une fois le fichier qui n’est plus dans ton staging, tu peux même annuler toutes les modifications que tu as apporté au fichier depuis ton dernier commit avec la commande <code>git checkout -- nomdufichier</code>, et tu peux aussi mettre plusieurs noms de fichiers. Par exemple, si j’ai modifié mon <code>main.c</code> en modifiant ainsi les arguments du <code>main()</code> :
 </p>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #929EA1;">#include</span> <span style="color: #d1dadb;">&lt;</span><span style="color: #727F80;">stdio.h</span><span style="color: #d1dadb;">&gt;</span>
-<span style="color: #929EA1;">int</span> <span style="color: #A6B6B8;">main</span><span style="color: #d1dadb;">(</span><span style="color: #929EA1;">void</span><span style="color: #d1dadb;">)</span> <span style="color: #d1dadb;">{</span>
-  printf<span style="color: #798787;">(</span><span style="color: #727F80;">"Hello World!\n"</span><span style="color: #798787;">)</span>;
-  <span style="color: #899597; font-weight: bold;">return</span> <span style="color: #798787;">0</span>;
-<span style="color: #d1dadb;">}</span>
+<pre class="src src-C"><span style="color: #9BAEAC;">#include</span> <span style="color: #d0dbda;">&lt;</span><span style="color: #6E8F98;">stdio.h</span><span style="color: #d0dbda;">&gt;</span>
+<span style="color: #9BAEAC;">int</span> <span style="color: #9FC1C2;">main</span><span style="color: #d0dbda;">(</span><span style="color: #9BAEAC;">void</span><span style="color: #d0dbda;">)</span> <span style="color: #d0dbda;">{</span>
+  printf<span style="color: #69959F;">(</span><span style="color: #6E8F98;">"Hello World!\n"</span><span style="color: #69959F;">)</span>;
+  <span style="color: #91ADAF; font-weight: bold;">return</span> <span style="color: #69959F;">0</span>;
+<span style="color: #d0dbda;">}</span>
 </pre>
 </div>
 <p>
@@ -514,9 +536,9 @@ Si je fait un <code>cat</code> du fichier, je vois qu’il est revenu à son ét
 </p>
 </div>
 </div>
-<div id="outline-container-org38bcd9c" class="outline-3">
-<h3 id="org38bcd9c"><span class="section-number-3">3.4</span> En fait, j’ai juste oublié un truc dans mon commit précédent</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org7939e24" class="outline-3">
+<h3 id="org7939e24"><span class="section-number-3">4.4</span> En fait, j’ai juste oublié un truc dans mon commit précédent</h3>
+<div class="outline-text-3" id="text-4-4">
 <p>
 Si jamais tu veux à la place ajouter la modification d’un fichier au dernier commit (mettons, tu as oublié d’ajouter également un fichier texte), tu peux utiliser l’option <code>--amend</code> lors du commit du fichier oublié.
 </p>
@@ -539,9 +561,9 @@ En gros, le commit que tu viens de faire a remplacé le précédent en conservan
 </p>
 </div>
 </div>
-<div id="outline-container-org9a93b6a" class="outline-3">
-<h3 id="org9a93b6a"><span class="section-number-3">3.5</span> Euh, j’ai oublié ce que j’ai changé lors du dernier commit</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-org9a4f30e" class="outline-3">
+<h3 id="org9a4f30e"><span class="section-number-3">4.5</span> Euh, j’ai oublié ce que j’ai changé lors du dernier commit</h3>
+<div class="outline-text-3" id="text-4-5">
 <p>
 Pas de panique ! Tu peux entrer la commande <code>git diff</code> afin de voir ce que tout ce que tu as modifié lors de ton dernier commit. Et si tu ne souhaite voir les modifications que d’un certain fichier, tu peux ajouter le nom de ton fichier à la fin de la commande.
 </p>
@@ -613,9 +635,9 @@ index 03b0f20..b93413f 100644
 </div>
 </div>
 </div>
-<div id="outline-container-orga1259b0" class="outline-3">
-<h3 id="orga1259b0"><span class="section-number-3">3.6</span> Il y a des fichiers dont je me fiche dans mon dépôt</h3>
-<div class="outline-text-3" id="text-3-6">
+<div id="outline-container-org82ae757" class="outline-3">
+<h3 id="org82ae757"><span class="section-number-3">4.6</span> Il y a des fichiers dont je me fiche dans mon dépôt</h3>
+<div class="outline-text-3" id="text-4-6">
 <p>
 Dans ce cas, il est grand temps de te présenter le fichier <code>.gitignore</code>. Comme son nom l’indique, il permet au dépôt d’ignorer des fichiers selon ce que tu lui indiqueras. Par exemple, si tu veux ignorer tous les fichiers qui se terminent en <code>.out</code> (ou <code>.exe</code> sous Windows), tu peux éditer (ou créer) ton <code>.gitignore</code> et entrer ces lignes :
 </p>
@@ -629,9 +651,9 @@ Maintenant, si tu créés un fichier en <code>.out</code> ou <code>.exe</code>, 
 </p>
 </div>
 </div>
-<div id="outline-container-org4aca8c0" class="outline-3">
-<h3 id="org4aca8c0"><span class="section-number-3">3.7</span> On est plusieurs dessus en fait…</h3>
-<div class="outline-text-3" id="text-3-7">
+<div id="outline-container-orgcf77752" class="outline-3">
+<h3 id="orgcf77752"><span class="section-number-3">4.7</span> On est plusieurs dessus en fait…</h3>
+<div class="outline-text-3" id="text-4-7">
 <p>
 Pas de panique ! Git dispose d’une fonctionnalité de brachange permettant d’avoir plusieurs versions coexistantes d’un même fichier. Cela peut être très utile pour avoir soit plusieurs personnes travaillant sur un même projet, soit pour une même personne travaillant sur plusieurs fonctionnalités différentes, soit les deux. Ainsi, on a plusieurs version idépendantes que l’on pourra fusionner plus tard.
 </p>
@@ -677,16 +699,16 @@ Rappelle-toi que la commande <code>merge</code> ramène les commits de la branch
 </div>
 </div>
 </div>
-<div id="outline-container-org3ce705c" class="outline-2">
-<h2 id="org3ce705c"><span class="section-number-2">4</span> J’ai entendu parler de GitHub…</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgd6e3ca9" class="outline-2">
+<h2 id="orgd6e3ca9"><span class="section-number-2">5</span> J’ai entendu parler de GitHub…</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Tu commences à me plaire Enzo ! GitHub est un site web sur lequel tu peux héberger des projets libres ou open-source (si tu ne connais pas la différence, voici <a href="https://www.gnu.org/philosophy/open-source-misses-the-point.fr.html">un article</a> pour t’aider à comprendre, et <a href="https://www.gnu.org/philosophy/free-software-for-freedom.fr.html">un autre</a> pour la route). C’est en particulier orienté pour les projets gérés par git, ce qui tombe bien car c’est ce qu’on utilise. Cela a pour avantage de pouvoir aisément partager ton code et d’assurer qu’il est bien sauvegardé quelque part d’autre que ton disque dur (un <code>rm -rf</code> est si vite arrivé). Et surtout, ça peut te permettre de collaborer avec d’autres personnes sur le même projet sans te casser la tête.
 </p>
 </div>
-<div id="outline-container-org1e943ba" class="outline-3">
-<h3 id="org1e943ba"><span class="section-number-3">4.1</span> J’ai téléchargé un projet en zip</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-org567803c" class="outline-3">
+<h3 id="org567803c"><span class="section-number-3">5.1</span> J’ai téléchargé un projet en zip</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 Ou bien, tu peux télécharger le projet directement via <code>git</code>. Eh oui ! git permet de gérer les dépôts dits distants, c’est à dire ceux qui sont hébergés sur un serveur en ligne, comme par exemple sur GitHub. Pour cela, il te faut te munir du lien vers le dépôt git, et le passer en argument de <code>git clone</code>. Par exemple, si tu veux télécharger de dépôt du petit logiciel de chat en réseau que j’ai codé durant ma L2 d’informatique, tu peux exécuter ceci :
 </p>
@@ -704,9 +726,9 @@ Et c’est bon, tu as accès au répertoire <code>chat-reseau-P8</code> et au co
 </p>
 </div>
 </div>
-<div id="outline-container-org12b50dd" class="outline-3">
-<h3 id="org12b50dd"><span class="section-number-3">4.2</span> Et si je veux créer mon propre dépôt sur GitHub</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-org364f435" class="outline-3">
+<h3 id="org364f435"><span class="section-number-3">5.2</span> Et si je veux créer mon propre dépôt sur GitHub</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
 Dans ce cas là, c’est simple Brigitte. Il faut que tu te créés un compte sur GitHub, puis tu cliques sur le bouton <code>+</code> et <code>New Repository</code>. Tu lui donnes le nom que tu souhaites (en l’occurrence je le nomme <code>temporary-repo</code> car je vais le supprimer cinq minutes après l’écriture de ces lignes), et tu cliques sur <code>Create Repository</code>. Tu n’ajoutes rien avant, pas de description, pas de <code>.gitignore</code>, RIEN.
 </p>
@@ -723,9 +745,9 @@ Et voilà, ton dépôt est lié au dépôt distant. Oui, juste comme ça.
 </p>
 </div>
 </div>
-<div id="outline-container-org3780760" class="outline-3">
-<h3 id="org3780760"><span class="section-number-3">4.3</span> Et du coup, comment je met tout ça en ligne ?</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgc386736" class="outline-3">
+<h3 id="orgc386736"><span class="section-number-3">5.3</span> Et du coup, comment je met tout ça en ligne ?</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 Bon ok, ce n’est pas aussi simple que ça. Une fois que tu as lié ton dépôt au dépôt distant, il faudra que tu mettes en ligne tes commits quand tu en auras l’occasion. Pour ce faire, tu n’as qu’à taper <code>git push</code> ; et la première fois, il faudra que tu indiques à ton dépôt où mettre en ligne précisément dans le dépôt distant, auquel cas tu ajoutes <code>-u origin master</code> pour cette première fois. Git te demandera donc tes identifiants GitHub pour pouvoir mettre tout ça en ligne.
 </p>
@@ -753,9 +775,9 @@ Bon, là en nom d’utilisateur y’a le mien, faudra remplacer avec le tiens. E
 </p>
 </div>
 </div>
-<div id="outline-container-org4e0b939" class="outline-3">
-<h3 id="org4e0b939"><span class="section-number-3">4.4</span> Quelqu’un a fait des modifications depuis mon dernier commit, je récupère ça comment ?</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-orgb488b58" class="outline-3">
+<h3 id="orgb488b58"><span class="section-number-3">5.4</span> Quelqu’un a fait des modifications depuis mon dernier commit, je récupère ça comment ?</h3>
+<div class="outline-text-3" id="text-5-4">
 <p>
 Pour faire un exemple, je viens de créer un <code>README.md</code> sur GitHub directement. Ce type de fichiers est assez standard afin de présenter plus ou moins en détails le dépôt et le projet qui y est lié, et son contenu apparaîtra formatté sur la page du dépôt sur GitHub s’il est au format <code>.md</code> (Markdown) ou <code>.org</code> (org-mode, le Markdown d’Emacs avec lequel est écrit ce tutoriel). Mais il n’est pas présent dans mon dépôt local, du coup je vais devoir le récupérer. On va donc entrer <code>git pull</code>.
 </p>
@@ -777,25 +799,25 @@ Fast-forward
 </div>
 </div>
 </div>
-<div id="outline-container-orgafeb18d" class="outline-3">
-<h3 id="orgafeb18d"><span class="section-number-3">4.5</span> Je suis en train de travailler sur le même fichier que Ginette</h3>
-<div class="outline-text-3" id="text-4-5">
+<div id="outline-container-orgb017de4" class="outline-3">
+<h3 id="orgb017de4"><span class="section-number-3">5.5</span> Je suis en train de travailler sur le même fichier que Ginette</h3>
+<div class="outline-text-3" id="text-5-5">
 <p>
-Là, c’est un problème qui aurait pu être évité avec l’usage des branches dont je t’avais parlé plus haut, mais visiblement, vous êtes sur la même branche. Pas bien. Dans ce cas-là, met-toi d’accord avec Ginette pour savoir qui fait ses push en premier. Si le choix tombe sur Ginette, ou si elle a imposé sa vision des choses et a fait son push avant toi, GitHub va râler car tu n’es pas à jour. Dans ce cas ne panique pas, si tu n’as pas fait tes commits, lance la commande <code>git stash</code> ; ça va sauvegarder tes modifications dans un coin à part et va annuler tes modifications.
+Là, c’est un problème qui aurait pu être évité avec l’usage des branches dont je t’avais parlé plus haut, mais visiblement, vous êtes sur la même branche. Pas bien. Dans ce cas-là, met-toi d’accord avec Ginette pour savoir qui fait ses push en premier. Si le choix tombe sur Ginette, ou si elle a imposé sa vision des choses et a fait son push avant toi, GitHub va râler car tu n’es pas à jour. Dans ce cas ne panique pas, si tu n’as pas fait tes commits, lance la commande <code>git stash</code> ; ça va sauvegarder tes modifications dans un coin à part et va annuler tes modifications. Va sur <i>ta</i> branche sur laquelle Ginette n’est pas en train de travailler, voire créé-en une nouvelle avec <code>git checkout -b tanouvellebranche</code>, et exécute <code>git stash pop</code> pour rétablir tes modifications sur cette branche.
 </p>
 </div>
 </div>
-<div id="outline-container-org1936e87" class="outline-3">
-<h3 id="org1936e87"><span class="section-number-3">4.6</span> GitHub ne veut pas de mes pushs sur le dépôt de Gilberte, oskour !</h3>
-<div class="outline-text-3" id="text-4-6">
+<div id="outline-container-orgf4d641b" class="outline-3">
+<h3 id="orgf4d641b"><span class="section-number-3">5.6</span> GitHub ne veut pas de mes pushs sur le dépôt de Gilberte, oskour !</h3>
+<div class="outline-text-3" id="text-5-6">
 <p>
 Du calme Jean-Célestin. Cela veut tout simplement dire que tu n’as tout simplement pas les droits d’écriture sur son dépôt. Du coup, soit tu peux lui demander directement à ce qu’elle te donne les droits d’écriture si elle a confiance en toi, soit tu peux créer un fork puis une pull-request sur GitHub depuis ton fork où tu auras fait tes modifications.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd44543c" class="outline-3">
-<h3 id="orgd44543c"><span class="section-number-3">4.7</span> Fork ? Pull request ? Que font des fourchettes et des pulls dans ce tuto ?</h3>
-<div class="outline-text-3" id="text-4-7">
+<div id="outline-container-org60979ea" class="outline-3">
+<h3 id="org60979ea"><span class="section-number-3">5.7</span> Fork ? Pull request ? Que font des fourchettes et des pulls dans ce tuto ?</h3>
+<div class="outline-text-3" id="text-5-7">
 <p>
 Ouhlà Billy, il va falloir remettre les choses au clair. Là il s’agit de quelque chose de spécifique à GitHub qu’à Git (d’où le fait qu’on en discute dans ce chapitre que le précédent).
 </p>
@@ -809,9 +831,9 @@ Si jamais il y a une modification dont tu es particulièrement fier, tu peux la 
 </p>
 </div>
 </div>
-<div id="outline-container-org4a2bb3f" class="outline-3">
-<h3 id="org4a2bb3f"><span class="section-number-3">4.8</span> J’ai remarqué un bug ou une erreur, mais je ne peux pas corriger ça moi-même</h3>
-<div class="outline-text-3" id="text-4-8">
+<div id="outline-container-org30468eb" class="outline-3">
+<h3 id="org30468eb"><span class="section-number-3">5.8</span> J’ai remarqué un bug ou une erreur, mais je ne peux pas corriger ça moi-même</h3>
+<div class="outline-text-3" id="text-5-8">
 <p>
 Eh bien dans ce cas-là, ouvre une <i>issue</i> Bernadette ; <i>issue</i> qui en français veut dire <i>problème</i>. Il s’agit d’un système de GitHub te permettant de signaler quelque chose aux propriétaires du dépôt, il peut s’agir d’un bug, d’une demande de fonctionnalité ou de proposition de modification d’autres fonctionnalités. Cela peut donner lieu à des discussions menant à la compréhension du bug, ou à une amélioration de ta proposition.
 </p>
@@ -822,9 +844,9 @@ Si tu soumets un bug, avant d’ouvrir une nouvelle <i>issue</i>, assure-toi de 
 </div>
 </div>
 </div>
-<div id="outline-container-orgf953051" class="outline-2">
-<h2 id="orgf953051"><span class="section-number-2">5</span> Les raccourcis et paramètres de Git</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org41de57a" class="outline-2">
+<h2 id="org41de57a"><span class="section-number-2">6</span> Les raccourcis et paramètres de Git</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Comme j’en avais parlé plus haut, il est possible de configurer git de façon un peu plus poussée que simplement déclarer notre nom et notre adresse email dans notre <code>~/.gitconfig</code>. Il est par exemple possible de déclarer notre éditeur texte préféré, notre navigateur par défaut ou bien même des raccourcis qui pourront t’être bien utile. Ci dessous je te met une partie de mon fichier de configuration avec quelques-unes de mes préférences et pas mal de mes alias.
 </p>
@@ -877,9 +899,9 @@ Comme j’en avais parlé plus haut, il est possible de configurer git de façon
 </dl>
 </div>
 </div>
-<div id="outline-container-orgc1ca16e" class="outline-2">
-<h2 id="orgc1ca16e"><span class="section-number-2">6</span> Et c’est tout ?</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org23fb4ba" class="outline-2">
+<h2 id="org23fb4ba"><span class="section-number-2">7</span> Et c’est tout ?</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 C’est déjà pas mal ! Mais non, ce n’est certainement pas tout. Cependant, ce tutoriel n’a pour but de t’apprendre que les bases de Git et de GitHub, pas de tout t’apprendre ! Si tu souhaites aller plus loin, connaitre plus de commandes (comme <code>git blame</code> ou <code>git reset</code>), ou bien connaître plus d’options, je ne peux que t’inviter à aller te documenter par toi-même sur le site de Git qui se trouve <a href="https://git-scm.com/">ici</a>, ou bien à consulter des pages de manuel dans ton terminal via <code>man git</code>, <code>man git-apply</code> ou <code>man-cherry-pick</code> (oui, il faut lier <code>git</code> et le nom de la commande par un tiret d’union).
 </p>
@@ -892,7 +914,7 @@ Si jamais tu as une question, n’hésite pas à m’envoyer un mail à <a href=
 </div>
 <div id="postamble" class="status">
 <p class="author">Auteur: Lucien Cartier-Tilet</p>
-<p class="date">Created: 2019-01-21 lun. 20:21</p>
+<p class="date">Created: 2019-03-04 lun. 15:24</p>
 <p class="validation"></p>
 </div>
 </body>
